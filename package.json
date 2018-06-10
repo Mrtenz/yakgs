@@ -1,6 +1,6 @@
 {
   "name": "yet-another-kittens-game-script",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A script for Kittens Game",
   "main": "src/index.tsx",
   "repository": "https://github.com/Mrtenz/yakgs",
