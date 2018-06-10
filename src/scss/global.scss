@@ -1,0 +1,22 @@
+// Stuff here will be imported outside of the #yakgs block.
+
+#yakgs {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  bottom: 50px;
+  background: white;
+  width: 400px;
+  border: 1px solid gray;
+  padding: 15px;
+  color: black;
+}
+
+body {
+  position: relative;
+}
+
+.visible {
+  display: block !important;
+}

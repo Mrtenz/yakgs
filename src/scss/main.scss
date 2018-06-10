@@ -1,0 +1,20 @@
+a, div {
+  color: black;
+}
+
+table {
+  width: 100%;
+  color: black;
+}
+
+table.align-right td:nth-child(2) {
+  text-align: right;
+}
+
+p {
+  margin-top: 0;
+}
+
+p.header {
+  font-weight: bold;
+}

@@ -1,0 +1,19 @@
+.button {
+  text-decoration: none;
+  display: block;
+  user-select: none;
+  font-family: Helvetica, sans-serif;
+  font-size: 14px;
+  text-align: center;
+  border: 1px solid black;
+  margin-bottom: 16px;
+  padding: 10px 0 10px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.button:hover {
+  opacity: 1;
+  border-color: #777;
+  background: #f9f9f9;
+}
