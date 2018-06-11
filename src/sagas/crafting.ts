@@ -6,6 +6,8 @@ import { ApplicationState } from '../store';
 
 const getSelectedItems = (state: ApplicationState) => state.crafting.selectedItems;
 
+const getRequirements = (state: ApplicationState) => state.crafting.requirements;
+
 const hasEnough = (price: any): boolean => {
   const resource = game.resPool.get(price.name);
   return (
@@ -14,12 +16,25 @@ const hasEnough = (price: any): boolean => {
   );
 };
 
+const meetsRequirements = (requirements: { [name: string]: number }): boolean => {
+  return !Object.keys(requirements).some(key => {
+    const required = requirements[key];
+    const current = game.resPool.get(key).value;
+
+    return required >= current;
+  });
+};
+
 function* craft(): SagaIterator {
   const selectedItems: string[] = yield select(getSelectedItems);
+  const requirements = yield select(getRequirements);
 
   selectedItems.forEach(selectedItem => {
     const item = game.workshop.getCraft(selectedItem);
-    if (item.prices.some(hasEnough)) {
+
+    const itemRequirements = requirements[item.name];
+
+    if ((!itemRequirements || meetsRequirements(itemRequirements)) && item.prices.some(hasEnough)) {
       game.workshop.craftAll(item.name);
     }
   });

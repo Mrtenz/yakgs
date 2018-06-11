@@ -46,7 +46,12 @@ const Shattering: React.StatelessComponent<Props> = ({
 
     <SwitchButton
       prefix="Focus on:"
-      target={targets.find(t => t.value === target) || { name: 'Time Crystals', value: Focus.TIME_CRYSTALS }}
+      target={
+        targets.find(t => t.value === target) || {
+          name: 'Time Crystals',
+          value: Focus.TIME_CRYSTALS
+        }
+      }
       targets={targets}
       onSwitch={onSwitchTarget}
     />

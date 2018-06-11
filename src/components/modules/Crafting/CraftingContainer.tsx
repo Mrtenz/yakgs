@@ -2,10 +2,14 @@ import * as React from 'react';
 import { CraftingState, Item } from '../../../store/crafting/types';
 import { ApplicationState, ConnectedReduxProps } from '../../../store';
 import { connect } from 'react-redux';
-import { addItem, disableCrafting, enableCrafting, removeItem } from '../../../store/crafting/actions';
+import {
+  addItem,
+  disableCrafting,
+  enableCrafting,
+  removeItem
+} from '../../../store/crafting/actions';
 
-interface Props extends ConnectedReduxProps<CraftingState> {
-}
+interface Props extends ConnectedReduxProps<CraftingState> {}
 
 interface InjectedProps {
   items: Item[];
@@ -15,28 +19,27 @@ interface InjectedProps {
   onToggleItem: (item: string) => void;
 }
 
-interface ExternalProps {
-}
+interface ExternalProps {}
 
-export const withContainer = <OriginalProps extends InjectedProps> (
+export const withContainer = <OriginalProps extends InjectedProps>(
   Component: React.ComponentType<OriginalProps>
 ) => {
   class CraftingContainer extends React.Component<ExternalProps & Props & CraftingState> {
-    constructor (props: ExternalProps & Props & CraftingState) {
+    constructor(props: ExternalProps & Props & CraftingState) {
       super(props);
 
       this.handleToggleItem = this.handleToggleItem.bind(this);
       this.handleToggleCrafting = this.handleToggleCrafting.bind(this);
     }
 
-    getItems (): Item[] {
-      return game.workshop.crafts.map((workshopCraft: { name: string, label: string }) => ({
+    static getItems(): Item[] {
+      return game.workshop.crafts.map((workshopCraft: { name: string; label: string }) => ({
         name: workshopCraft.name,
         label: workshopCraft.label
       }));
     }
 
-    handleToggleItem (item: string) {
+    handleToggleItem(item: string) {
       const { selectedItems, dispatch } = this.props;
       if (selectedItems.some(i => i === item)) {
         dispatch(removeItem(item));
@@ -45,7 +48,7 @@ export const withContainer = <OriginalProps extends InjectedProps> (
       }
     }
 
-    handleToggleCrafting () {
+    handleToggleCrafting() {
       const { isEnabled, dispatch } = this.props;
       if (isEnabled) {
         dispatch(disableCrafting());
@@ -54,12 +57,12 @@ export const withContainer = <OriginalProps extends InjectedProps> (
       }
     }
 
-    render (): React.ReactNode {
+    render(): React.ReactNode {
       const { selectedItems, isEnabled } = this.props;
 
       return (
         <Component
-          items={this.getItems()}
+          items={CraftingContainer.getItems()}
           selectedItems={selectedItems}
           isEnabled={isEnabled}
           onToggleItem={this.handleToggleItem}

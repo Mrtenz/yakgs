@@ -28,12 +28,7 @@ const switchTarget = (
   onSwitch(targets[nextIndex]);
 };
 
-const SwitchButton: React.StatelessComponent<Props> = ({
-  prefix,
-  target,
-  targets,
-  onSwitch
-}) => (
+const SwitchButton: React.StatelessComponent<Props> = ({ prefix, target, targets, onSwitch }) => (
   <div onClick={() => switchTarget(target, targets, onSwitch)}>
     <Button>
       {prefix} {target.name}

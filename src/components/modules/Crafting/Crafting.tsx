@@ -3,6 +3,7 @@ import { Item } from '../../../store/crafting/types';
 import { withContainer } from './CraftingContainer';
 import NavButton from '../../ui/NavButton';
 import Button from '../../ui/Button';
+import { Link } from 'react-router-dom';
 
 interface Props {
   items: Item[];
@@ -30,13 +31,21 @@ const Crafting: React.StatelessComponent<Props> = ({
     <ul className="form">
       {items.map(item => (
         <li key={item.name}>
-          <input
-            id={`item-${item.name}`}
-            type="checkbox"
-            defaultChecked={selectedItems.some(selection => selection === item.name)}
-            onClick={() => onToggleItem(item.name)}
-          />
-          <label htmlFor={`item-${item.name}`}>{item.label}</label>
+          <div className="left">
+            <input
+              id={`item-${item.name}`}
+              type="checkbox"
+              defaultChecked={selectedItems.some(selection => selection === item.name)}
+              onClick={() => onToggleItem(item.name)}
+            />
+            <label htmlFor={`item-${item.name}`}>{item.label}</label>
+          </div>
+          <div className="right">
+            <Link to={`/crafting/${item.name}`} className="small">
+              Configure
+            </Link>
+          </div>
+          <div className="clear" />
         </li>
       ))}
     </ul>

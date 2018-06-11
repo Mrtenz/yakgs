@@ -5,7 +5,7 @@ import { ApplicationState } from '../store';
 
 const getHandlers = (state: ApplicationState): string[] => state.timer.handlers;
 
-function* timer (): SagaIterator {
+function* timer(): SagaIterator {
   while (true) {
     yield take(TICK_TIMER);
 
@@ -16,12 +16,12 @@ function* timer (): SagaIterator {
   }
 }
 
-function* startTimer (): SagaIterator {
+function* startTimer(): SagaIterator {
   const task = yield fork(timer);
   yield take(STOP_TIMER);
   yield cancel(task);
 }
 
-export default function* rootSaga () {
+export default function* rootSaga() {
   yield all([takeLatest(START_TIMER, startTimer)]);
 }

@@ -5,12 +5,15 @@ import {
   CraftingState,
   DISABLE_CRAFTING,
   ENABLE_CRAFTING,
-  REMOVE_ITEM
+  REMOVE_ITEM,
+  RESET_REQUIREMENTS,
+  SET_REQUIREMENTS
 } from './types';
 
 export const initialState: CraftingState = {
   isEnabled: false,
-  selectedItems: []
+  selectedItems: [],
+  requirements: {}
 };
 
 const reducer: Reducer<CraftingState> = (
@@ -27,6 +30,14 @@ const reducer: Reducer<CraftingState> = (
     case REMOVE_ITEM:
       const items = state.selectedItems.filter(item => item !== action.payload);
       return { ...state, selectedItems: items };
+    case SET_REQUIREMENTS:
+      return {
+        ...state,
+        requirements: { ...state.requirements, [action.payload.name]: action.payload.requirements }
+      };
+    case RESET_REQUIREMENTS:
+      const { [action.payload]: value, ...requirements } = state.requirements;
+      return { ...state, requirements };
     default:
       return state;
   }

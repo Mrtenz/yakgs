@@ -9,6 +9,7 @@ import { startTimer, tickTimer } from './timer/actions';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { Persistor } from 'redux-persist/es/types';
+import autoMergeLevel2 from 'redux-persist/es/stateReconciler/autoMergeLevel2';
 
 /**
  * Bind game timer to Redux.
@@ -31,7 +32,8 @@ const configureStore = (
   const persistedReducer = persistReducer(
     {
       key: 'redux',
-      storage
+      storage,
+      stateReconciler: autoMergeLevel2
     },
     reducers as any
   );

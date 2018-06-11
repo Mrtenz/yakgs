@@ -7,7 +7,11 @@ import {
   ENABLE_CRAFTING,
   EnableCraftingAction,
   REMOVE_ITEM,
-  RemoveItemAction
+  RemoveItemAction,
+  RESET_REQUIREMENTS,
+  ResetRequirementsAction,
+  SET_REQUIREMENTS,
+  SetRequirementsAction
 } from './types';
 
 export const addItem: ActionCreator<AddItemAction> = (item: string) => ({
@@ -26,4 +30,17 @@ export const enableCrafting: ActionCreator<EnableCraftingAction> = () => ({
 
 export const disableCrafting: ActionCreator<DisableCraftingAction> = () => ({
   type: DISABLE_CRAFTING
+});
+
+export const setRequirements: ActionCreator<SetRequirementsAction> = (
+  name: string,
+  requirements: { [name: string]: number }
+) => ({
+  type: SET_REQUIREMENTS,
+  payload: { name, requirements }
+});
+
+export const resetRequirements: ActionCreator<ResetRequirementsAction> = (name: string) => ({
+  type: RESET_REQUIREMENTS,
+  payload: name
 });
