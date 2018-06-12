@@ -6,6 +6,7 @@ import Crafting from './modules/Crafting/Crafting';
 import Requirements from './modules/Crafting/Requirements/Requirements';
 import Shattering from './modules/Shattering/Shattering';
 import Automation from './modules/Automation/Automation';
+import Synchronization from './modules/Synchronization/Synchronization';
 
 const App: React.StatelessComponent<{}> = () => (
   <Switch>
@@ -14,6 +15,7 @@ const App: React.StatelessComponent<{}> = () => (
     <Route exact path="/crafting/:item" component={Requirements} />
     <Route exact path="/shattering" component={Shattering} />
     <Route exact path="/automation" component={Automation} />
+    <Route exact path="/synchronization" component={Synchronization} />
   </Switch>
 );
 

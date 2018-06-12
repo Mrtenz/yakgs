@@ -9,12 +9,15 @@ import { CraftingState } from './crafting/types';
 import craftingReducer from './crafting/reducer';
 import { AutomationState } from './automation/types';
 import automationReducer from './automation/reducer';
+import { SynchronizationState } from './synchronization/types';
+import synchronizationReducer from './synchronization/reducer';
 
 export interface ApplicationState {
   timer: TimerState;
   shattering: ShatteringState;
   crafting: CraftingState;
   automation: AutomationState;
+  synchronization: SynchronizationState;
 }
 
 export const reducers: Reducer<ApplicationState> = combineReducers<ApplicationState>({
@@ -22,6 +25,7 @@ export const reducers: Reducer<ApplicationState> = combineReducers<ApplicationSt
   shattering: shatteringReducer,
   crafting: craftingReducer,
   automation: automationReducer,
+  synchronization: synchronizationReducer,
   router: routerReducer
 });
 

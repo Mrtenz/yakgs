@@ -10,6 +10,7 @@ An automation script for [Kittens Game](http://bloodrizer.ru/games/kittens/).
 * Automatically praise the sun.
 * Automatically observe astronomical events.
 * Automatically feed necrocorns to the elders.
+* Backup and synchronize your save game, even between multiple computers.
 
 If you have suggestions for a feature, feel free to [open an issue](https://github.com/Mrtenz/yakgs/issues/new).
 
