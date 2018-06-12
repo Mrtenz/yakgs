@@ -9,7 +9,7 @@ import {
   removeItem
 } from '../../../store/crafting/actions';
 
-interface Props extends ConnectedReduxProps<CraftingState> {}
+interface Props extends ConnectedReduxProps<CraftingState>, CraftingState {}
 
 interface InjectedProps {
   items: Item[];
@@ -21,11 +21,11 @@ interface InjectedProps {
 
 interface ExternalProps {}
 
-export const withContainer = <OriginalProps extends InjectedProps>(
+const withContainer = <OriginalProps extends InjectedProps>(
   Component: React.ComponentType<OriginalProps>
 ) => {
-  class CraftingContainer extends React.Component<ExternalProps & Props & CraftingState> {
-    constructor(props: ExternalProps & Props & CraftingState) {
+  class CraftingContainer extends React.Component<ExternalProps & Props> {
+    constructor(props: ExternalProps & Props) {
       super(props);
 
       this.handleToggleItem = this.handleToggleItem.bind(this);
@@ -76,3 +76,5 @@ export const withContainer = <OriginalProps extends InjectedProps>(
 
   return connect(mapStateToProps)(CraftingContainer);
 };
+
+export default withContainer;

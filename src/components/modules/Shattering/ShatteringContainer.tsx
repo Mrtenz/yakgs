@@ -11,7 +11,7 @@ import {
   toggleTrading
 } from '../../../store/shattering/actions';
 
-interface Props extends ConnectedReduxProps<ShatteringState> {}
+interface Props extends ConnectedReduxProps<ShatteringState>, ShatteringState {}
 
 interface InjectedProps {
   isEnabled: boolean;
@@ -27,10 +27,10 @@ interface InjectedProps {
 
 interface ExternalProps {}
 
-export const withContainer = <OriginalProps extends InjectedProps>(
+const withContainer = <OriginalProps extends InjectedProps>(
   Component: React.ComponentType<OriginalProps>
 ) => {
-  class ShatteringContainer extends React.Component<ExternalProps & Props & ShatteringState> {
+  class ShatteringContainer extends React.Component<ExternalProps & Props> {
     targets = [
       {
         name: 'Time Crystals',
@@ -46,7 +46,7 @@ export const withContainer = <OriginalProps extends InjectedProps>(
       }
     ];
 
-    constructor(props: ExternalProps & Props & ShatteringState) {
+    constructor(props: ExternalProps & Props) {
       super(props);
 
       this.handleToggleShattering = this.handleToggleShattering.bind(this);
@@ -99,3 +99,5 @@ export const withContainer = <OriginalProps extends InjectedProps>(
 
   return connect(mapStateToProps)(ShatteringContainer);
 };
+
+export default withContainer;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Item } from '../../../store/crafting/types';
-import { withContainer } from './CraftingContainer';
+import withContainer from './CraftingContainer';
 import NavButton from '../../ui/NavButton';
 import Button from '../../ui/Button';
 import { Link } from 'react-router-dom';

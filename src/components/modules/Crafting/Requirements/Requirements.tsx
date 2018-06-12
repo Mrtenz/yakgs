@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { withContainer } from './RequirementsContainer';
+import withContainer from './RequirementsContainer';
 import NavButton from '../../../ui/NavButton';
 import Button from '../../../ui/Button';
 

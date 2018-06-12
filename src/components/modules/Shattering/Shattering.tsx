@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getTradeAmount, getUnobtainiumPerShatter } from '../../../utils/shattering';
 import { default as SwitchButton, Target } from '../../ui/SwitchButton';
 import { Focus } from '../../../store/shattering/types';
-import { withContainer } from './ShatteringContainer';
+import withContainer from './ShatteringContainer';
 import NavButton from '../../ui/NavButton';
 import ToggleButton from '../../ui/ToggleButton';
 

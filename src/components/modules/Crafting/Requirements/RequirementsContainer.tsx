@@ -5,7 +5,10 @@ import { CraftingState } from '../../../../store/crafting/types';
 import { resetRequirements, setRequirements } from '../../../../store/crafting/actions';
 import { connect } from 'react-redux';
 
-interface Props extends RouteComponentProps<{ item: string }>, ConnectedReduxProps<CraftingState> {}
+interface Props
+  extends RouteComponentProps<{ item: string }>,
+    ConnectedReduxProps<CraftingState>,
+    CraftingState {}
 
 interface InjectedProps {
   label: string;
@@ -20,11 +23,11 @@ interface InjectedProps {
 
 interface ExternalProps {}
 
-export const withContainer = <OriginalProps extends InjectedProps>(
+const withContainer = <OriginalProps extends InjectedProps>(
   Component: React.ComponentType<OriginalProps>
 ) => {
-  class RequirementsContainer extends React.Component<ExternalProps & Props & CraftingState> {
-    constructor(props: ExternalProps & Props & CraftingState) {
+  class RequirementsContainer extends React.Component<ExternalProps & Props> {
+    constructor(props: ExternalProps & Props) {
       super(props);
 
       this.handleChange = this.handleChange.bind(this);
@@ -83,3 +86,5 @@ export const withContainer = <OriginalProps extends InjectedProps>(
 
   return connect(mapStateToProps)(RequirementsContainer);
 };
+
+export default withContainer;
