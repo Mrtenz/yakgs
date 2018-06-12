@@ -12,6 +12,11 @@ An automation script for [Kittens Game](http://bloodrizer.ru/games/kittens/).
 * Automatically feed necrocorns to the elders.
 * Backup and synchronize your save game, even between multiple computers.
 
+## Planned Features
+
+* In-game unicorn and alicorn efficiency calculator.
+* Notifications for when something happens (resource almost full; blackcoin price reaching 1100 etc.).
+
 If you have suggestions for a feature, feel free to [open an issue](https://github.com/Mrtenz/yakgs/issues/new).
 
 ## Getting Started
@@ -32,3 +37,6 @@ This will create a `yakgs.user.js` file in `dist/`, that you can import in your 
 * Install `yakgs.dev.user.js` to your browser.
 * Start a development server with `yarn run dev`.
 * Go to `http://localhost:8080` in your browser.
+
+## Screenshots
+There are some screenshots of some of the functionality of version 1.1.0 [here](https://imgur.com/a/8M672fr).
