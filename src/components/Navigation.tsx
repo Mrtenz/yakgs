@@ -6,6 +6,7 @@ const Navigation: React.StatelessComponent = () => (
     <NavButton to="/crafting">Crafting</NavButton>
     <NavButton to="/shattering">Shattering</NavButton>
     <NavButton to="/automation">Automation</NavButton>
+    <NavButton to="/unicorns">Unicorns</NavButton>
     <NavButton to="/synchronization">Synchronization</NavButton>
   </div>
 );
