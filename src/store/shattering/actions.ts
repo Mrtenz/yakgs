@@ -7,6 +7,8 @@ import {
   Focus,
   FocusSetAction,
   SET_FOCUS,
+  SET_TARGET_CYCLE,
+  SetTargetCycleAction,
   TOGGLE_CRAFTING,
   TOGGLE_TRADING,
   ToggleCraftingAction,
@@ -32,4 +34,9 @@ export const toggleTrading: ActionCreator<ToggleTradingAction> = () => ({
 
 export const toggleCrafting: ActionCreator<ToggleCraftingAction> = () => ({
   type: TOGGLE_CRAFTING
+});
+
+export const setTargetCycle: ActionCreator<SetTargetCycleAction> = (cycle: string) => ({
+  type: SET_TARGET_CYCLE,
+  payload: cycle
 });

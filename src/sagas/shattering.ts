@@ -17,7 +17,7 @@ function* shatter(): SagaIterator {
 
     const state = yield select(getShatterState);
 
-    shatterTCs(state.focus, state.isTradingEnabled, state.isCraftingEnabled);
+    shatterTCs(state.focus, state.isTradingEnabled, state.isCraftingEnabled, state.targetCycle);
   }
 }
 

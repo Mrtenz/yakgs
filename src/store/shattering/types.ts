@@ -5,6 +5,7 @@ export interface ShatteringState {
   isTradingEnabled: boolean;
   isCraftingEnabled: boolean;
   focus: Focus;
+  targetCycle: string;
 }
 
 export enum Focus {
@@ -21,6 +22,8 @@ export const SHATTER = 'SHATTER';
 
 export const TOGGLE_TRADING = 'TOGGLE_TRADING';
 export const TOGGLE_CRAFTING = 'TOGGLE_CRAFTING';
+
+export const SET_TARGET_CYCLE = 'SET_TARGET_CYCLE';
 
 export interface FocusSetAction extends Action {
   type: typeof SET_FOCUS;
@@ -43,9 +46,15 @@ export interface ToggleCraftingAction extends Action {
   type: typeof TOGGLE_CRAFTING;
 }
 
+export interface SetTargetCycleAction extends Action {
+  type: typeof SET_TARGET_CYCLE;
+  payload: string;
+}
+
 export type ShatteringActions =
   | FocusSetAction
   | EnableShatteringAction
   | DisableShatteringAction
   | ToggleTradingAction
-  | ToggleCraftingAction;
+  | ToggleCraftingAction
+  | SetTargetCycleAction;

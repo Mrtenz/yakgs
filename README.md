@@ -6,6 +6,7 @@ An automation script for [Kittens Game](http://bloodrizer.ru/games/kittens/).
 * Automatically craft items.
 * Set a minimum number of items required to craft something.
 * Automatically shatter time crystals and trade the unobtainium or craft eludium.
+* Set a target cycle, in which no Time Crystals will be shattered.
 * Automatically send hunters.
 * Automatically praise the sun.
 * Automatically observe astronomical events.

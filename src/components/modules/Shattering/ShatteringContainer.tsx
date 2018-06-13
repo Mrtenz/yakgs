@@ -7,6 +7,7 @@ import {
   disableShattering,
   enableShattering,
   setFocus,
+  setTargetCycle,
   toggleCrafting,
   toggleTrading
 } from '../../../store/shattering/actions';
@@ -23,6 +24,8 @@ interface InjectedProps {
   target: Focus;
   targets: Target<Focus>[];
   onSwitchTarget: (target: Target<Focus>) => void;
+  cycle: string;
+  onChangeCycle: (cycle: string) => void;
 }
 
 interface ExternalProps {}
@@ -53,6 +56,7 @@ const withContainer = <OriginalProps extends InjectedProps>(
       this.handleToggleTrading = this.handleToggleTrading.bind(this);
       this.handleToggleCrafting = this.handleToggleCrafting.bind(this);
       this.handleSwitchTarget = this.handleSwitchTarget.bind(this);
+      this.handleChangeCycle = this.handleChangeCycle.bind(this);
     }
 
     handleToggleShattering() {
@@ -76,8 +80,12 @@ const withContainer = <OriginalProps extends InjectedProps>(
       this.props.dispatch(setFocus(target.value));
     }
 
+    handleChangeCycle(cycle: string) {
+      this.props.dispatch(setTargetCycle(cycle));
+    }
+
     render(): React.ReactNode {
-      const { isEnabled, isTradingEnabled, isCraftingEnabled, focus } = this.props;
+      const { isEnabled, isTradingEnabled, isCraftingEnabled, focus, targetCycle } = this.props;
 
       return (
         <Component
@@ -90,6 +98,8 @@ const withContainer = <OriginalProps extends InjectedProps>(
           target={focus}
           targets={this.targets}
           onSwitchTarget={this.handleSwitchTarget}
+          cycle={targetCycle}
+          onChangeCycle={this.handleChangeCycle}
         />
       );
     }

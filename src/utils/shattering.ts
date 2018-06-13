@@ -46,16 +46,46 @@ const craft = (times: number) => {
   }
 };
 
+const getYearsToCycle = (target: string): number => {
+  const targetIndex = game.calendar.cycles.findIndex((cycle: any) => cycle.name === target);
+  const rawDifference = targetIndex - game.calendar.cycle;
+
+  let difference = 0;
+  if (rawDifference <= 0) {
+    difference = game.calendar.cycles.length - game.calendar.cycle + targetIndex;
+  } else {
+    difference = rawDifference;
+  }
+
+  return difference * (game.calendar.yearsPerCycle + 1) - game.calendar.cycleYear;
+};
+
 export const shatterTCs = (
   focus: Focus,
   isTradingEnabled: boolean,
-  isCraftingEnabled: boolean
+  isCraftingEnabled: boolean,
+  targetCycle: string
 ): void => {
   const heat = game.time.heat;
   const maxHeat = game.time.getCFU('blastFurnace').val * 100 + 100;
-  const amount = Math.floor((maxHeat - heat) / 5);
+  let amount = Math.floor((maxHeat - heat) / 5);
   if (amount === 0) {
     return;
+  }
+
+  if (targetCycle !== 'none') {
+    const currentCycle = game.calendar.cycles[game.calendar.cycle];
+    if (currentCycle.name === targetCycle) {
+      game.time.getCFU('blastFurnace').isAutomationEnabled = false;
+      return;
+    }
+
+    game.time.getCFU('blastFurnace').isAutomationEnabled = true;
+
+    const yearsToCycle = getYearsToCycle(targetCycle);
+    if (amount > yearsToCycle) {
+      amount = yearsToCycle;
+    }
   }
 
   // The time tab has to be loaded once before shattering works

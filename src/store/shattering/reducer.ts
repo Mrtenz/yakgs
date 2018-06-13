@@ -7,14 +7,16 @@ import {
   TOGGLE_CRAFTING,
   ENABLE_SHATTERING,
   TOGGLE_TRADING,
-  DISABLE_SHATTERING
+  DISABLE_SHATTERING,
+  SET_TARGET_CYCLE
 } from './types';
 
 export const initialState: ShatteringState = {
   isEnabled: false,
   isTradingEnabled: true,
   isCraftingEnabled: true,
-  focus: Focus.TIME_CRYSTALS
+  focus: Focus.TIME_CRYSTALS,
+  targetCycle: 'none'
 };
 
 const reducer: Reducer<ShatteringState> = (
@@ -32,6 +34,8 @@ const reducer: Reducer<ShatteringState> = (
       return { ...state, isTradingEnabled: !state.isTradingEnabled };
     case TOGGLE_CRAFTING:
       return { ...state, isCraftingEnabled: !state.isCraftingEnabled };
+    case SET_TARGET_CYCLE:
+      return { ...state, targetCycle: action.payload };
     default:
       return state;
   }

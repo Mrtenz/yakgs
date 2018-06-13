@@ -18,6 +18,8 @@ interface Props {
   target: Focus;
   targets: Target<Focus>[];
   onSwitchTarget: (target: Target<Focus>) => void;
+  cycle: string;
+  onChangeCycle: (cycle: string) => void;
 }
 
 const Shattering: React.StatelessComponent<Props> = ({
@@ -29,7 +31,9 @@ const Shattering: React.StatelessComponent<Props> = ({
   isTradingEnabled,
   onToggleTrading,
   isCraftingEnabled,
-  onToggleCrafting
+  onToggleCrafting,
+  cycle,
+  onChangeCycle
 }) => (
   <div className="shattering">
     <p className="header">Shattering</p>
@@ -69,6 +73,22 @@ const Shattering: React.StatelessComponent<Props> = ({
       disabledText="Enable Crafting"
       onClick={onToggleCrafting}
     />
+
+    <div className="field">
+      <label>Target Cycle</label>
+      <p className="small">
+        By selecting a cycle here, it will shatter up to that cycle and not shatter during the
+        cycle.
+      </p>
+      <select value={cycle} onChange={event => onChangeCycle(event.target.value)}>
+        <option value="none">None</option>
+        {game.calendar.cycles.map((cycle: any) => (
+          <option key={cycle.name} value={cycle.name}>
+            {cycle.title}
+          </option>
+        ))}
+      </select>
+    </div>
 
     <table>
       <tbody>

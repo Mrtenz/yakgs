@@ -24,9 +24,11 @@ ul.form {
     }
   }
 
-  input {
+  input, select, select > option {
     width: 100%;
     padding-left: 5px;
     box-sizing: border-box;
+    background-color: #fff;
+    color: black;
   }
 }
