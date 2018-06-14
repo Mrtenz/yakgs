@@ -88,6 +88,12 @@ export const shatterTCs = (
     }
   }
 
+  const unobtainium = game.resPool.get('unobtainium');
+  const max = Math.floor((unobtainium.maxValue - unobtainium.value) / getUnobtainiumPerShatter());
+  if (amount > max) {
+    amount = max;
+  }
+
   // The time tab has to be loaded once before shattering works
   let shatterCost;
   try {
@@ -103,11 +109,12 @@ export const shatterTCs = (
     return;
   }
 
-  game.time.shatter(amount);
-  game.resPool.get('timeCrystal').value -= amount;
-  game.time.heat += amount * (game.challenges.getChallenge('1000Years').researched ? 5 : 10);
+  if (amount > 0) {
+    game.time.shatter(amount);
+    game.resPool.get('timeCrystal').value -= amount;
+    game.time.heat += amount * (game.challenges.getChallenge('1000Years').researched ? 5 : 10);
+  }
 
-  const unobtainium = game.resPool.get('unobtainium');
   let tradeTimes = -1;
   let craftTimes = -1;
 
