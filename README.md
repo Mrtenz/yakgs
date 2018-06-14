@@ -11,12 +11,14 @@ An automation script for [Kittens Game](http://bloodrizer.ru/games/kittens/).
 * Automatically praise the sun.
 * Automatically observe astronomical events.
 * Automatically feed necrocorns to the elders.
+* In-game unicorn calculator.
+* Get a notification when some of your resources are (almost) full.
 * Backup and synchronize your save game, even between multiple computers.
 
 ## Planned Features
 
-* In-game unicorn and alicorn efficiency calculator.
-* Notifications for when something happens (resource almost full; blackcoin price reaching 1100 etc.).
+* In-game alicorn efficiency calculator.
+* More triggers for notifications (e.g. blackcoin price reaching 1100).
 
 If you have suggestions for a feature, feel free to [open an issue](https://github.com/Mrtenz/yakgs/issues/new).
 
