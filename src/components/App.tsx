@@ -7,6 +7,8 @@ import Requirements from './modules/Crafting/Requirements/Requirements';
 import Shattering from './modules/Shattering/Shattering';
 import Automation from './modules/Automation/Automation';
 import Unicorns from './modules/Unicorns/Unicorns';
+import Notifications from './modules/Notifications/Notifications';
+import ResourceTriggers from './modules/Notifications/ResourceTriggers/ResourceTriggers';
 import Synchronization from './modules/Synchronization/Synchronization';
 
 const App: React.StatelessComponent<{}> = () => (
@@ -17,6 +19,8 @@ const App: React.StatelessComponent<{}> = () => (
     <Route exact path="/shattering" component={Shattering} />
     <Route exact path="/automation" component={Automation} />
     <Route exact path="/unicorns" component={Unicorns} />
+    <Route exact path="/notifications" component={Notifications} />
+    <Route exact path="/notifications/resources" component={ResourceTriggers} />
     <Route exact path="/synchronization" component={Synchronization} />
   </Switch>
 );
