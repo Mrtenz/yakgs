@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import {
   disableShattering,
   enableShattering,
+  setDelay,
   setFocus,
   setTargetCycle,
   toggleCrafting,
@@ -26,6 +27,8 @@ interface InjectedProps {
   onSwitchTarget: (target: Target<Focus>) => void;
   cycle: string;
   onChangeCycle: (cycle: string) => void;
+  delay: number;
+  onChangeDelay: (delay: number) => void;
 }
 
 interface ExternalProps {}
@@ -57,6 +60,7 @@ const withContainer = <OriginalProps extends InjectedProps>(
       this.handleToggleCrafting = this.handleToggleCrafting.bind(this);
       this.handleSwitchTarget = this.handleSwitchTarget.bind(this);
       this.handleChangeCycle = this.handleChangeCycle.bind(this);
+      this.handleChangeDelay = this.handleChangeDelay.bind(this);
     }
 
     handleToggleShattering() {
@@ -84,8 +88,19 @@ const withContainer = <OriginalProps extends InjectedProps>(
       this.props.dispatch(setTargetCycle(cycle));
     }
 
+    handleChangeDelay(delay: number) {
+      this.props.dispatch(setDelay(delay));
+    }
+
     render(): React.ReactNode {
-      const { isEnabled, isTradingEnabled, isCraftingEnabled, focus, targetCycle } = this.props;
+      const {
+        isEnabled,
+        isTradingEnabled,
+        isCraftingEnabled,
+        focus,
+        targetCycle,
+        delay
+      } = this.props;
 
       return (
         <Component
@@ -100,6 +115,8 @@ const withContainer = <OriginalProps extends InjectedProps>(
           onSwitchTarget={this.handleSwitchTarget}
           cycle={targetCycle}
           onChangeCycle={this.handleChangeCycle}
+          delay={delay}
+          onChangeDelay={this.handleChangeDelay}
         />
       );
     }

@@ -7,12 +7,19 @@ import { shatterTCs } from '../utils/shattering';
 
 const getShatterState = (state: ApplicationState) => state.shattering;
 
+const getDelay = (state: ApplicationState) => state.shattering.delay;
+
 let delay = 0;
+let interval = -1;
 
 function* shatter(): SagaIterator {
+  if (interval === -1) {
+    interval = yield select(getDelay);
+  }
+
   delay++;
-  // Delay by 15 game ticks, to allow the game to run daily events
-  if (delay >= 15) {
+  // Delay by `interval` game ticks
+  if (delay >= interval) {
     delay = 0;
 
     const state = yield select(getShatterState);

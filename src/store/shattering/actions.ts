@@ -6,8 +6,10 @@ import {
   EnableShatteringAction,
   Focus,
   FocusSetAction,
+  SET_DELAY,
   SET_FOCUS,
   SET_TARGET_CYCLE,
+  SetDelayAction,
   SetTargetCycleAction,
   TOGGLE_CRAFTING,
   TOGGLE_TRADING,
@@ -39,4 +41,9 @@ export const toggleCrafting: ActionCreator<ToggleCraftingAction> = () => ({
 export const setTargetCycle: ActionCreator<SetTargetCycleAction> = (cycle: string) => ({
   type: SET_TARGET_CYCLE,
   payload: cycle
+});
+
+export const setDelay: ActionCreator<SetDelayAction> = (delay: number) => ({
+  type: SET_DELAY,
+  payload: delay
 });

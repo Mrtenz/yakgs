@@ -20,6 +20,8 @@ interface Props {
   onSwitchTarget: (target: Target<Focus>) => void;
   cycle: string;
   onChangeCycle: (cycle: string) => void;
+  delay: number;
+  onChangeDelay: (delay: number) => void;
 }
 
 const Shattering: React.StatelessComponent<Props> = ({
@@ -33,7 +35,9 @@ const Shattering: React.StatelessComponent<Props> = ({
   isCraftingEnabled,
   onToggleCrafting,
   cycle,
-  onChangeCycle
+  onChangeCycle,
+  delay,
+  onChangeDelay
 }) => (
   <div className="shattering">
     <p className="header">Shattering</p>
@@ -88,6 +92,18 @@ const Shattering: React.StatelessComponent<Props> = ({
           </option>
         ))}
       </select>
+    </div>
+
+    <div className="field">
+      <label>Delay</label>
+      <p className="small">
+        Customize the delay between shattering in game ticks. 5 ticks = 1 second.
+      </p>
+      <input
+        type="number"
+        value={delay}
+        onChange={event => onChangeDelay(Number(event.target.value))}
+      />
     </div>
 
     <table>
