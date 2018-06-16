@@ -10,12 +10,9 @@ const getShatterState = (state: ApplicationState) => state.shattering;
 const getDelay = (state: ApplicationState) => state.shattering.delay;
 
 let delay = 0;
-let interval = -1;
 
 function* shatter(): SagaIterator {
-  if (interval === -1) {
-    interval = yield select(getDelay);
-  }
+  const interval = yield select(getDelay);
 
   delay++;
   // Delay by `interval` game ticks
