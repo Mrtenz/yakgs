@@ -94,6 +94,14 @@ function* testToken(): SagaIterator {
 }
 
 function* loadGame(): SagaIterator {
+  if (
+    !confirm(
+      'Are you sure you want to load your game from Github? This will overwrite your current game!'
+    )
+  ) {
+    return;
+  }
+
   const token = yield select(getToken);
 
   const { error, data } = yield call(getGists, token);
